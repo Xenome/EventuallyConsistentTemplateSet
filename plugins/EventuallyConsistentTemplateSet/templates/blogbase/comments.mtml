@@ -1,0 +1,112 @@
+<MTIfCommentsActive>
+<div id="comments" >
+  <MTComments>
+    <h2 id="comments" ><$MTEntryCommentCount singular="<__trans phrase="1 Comentario">" plural="<__trans phrase="# Commentarios">" none="<__trans phrase="Sin Comentarios">"$></h2>
+    <ul>
+        <mt:Include module="Individual Comment">
+    </ul>
+    </MTComments>
+
+
+
+    <MTIfCommentsAccepted>
+        <h2 id="postcomment" class="comments-open-header"><__trans phrase="Escribe tu comentario"></h2>
+
+
+            <script type="text/javascript" charset="utf-8">
+            
+                $(document).ready(function(){
+                	$("#comment-submit").click(function(){
+                        $("#comment-submit").attr("disabled","disabled");
+                        $("#comment-text").attr("disabled","disabled");
+                        if ($("#comment-armor")) {
+                           $("#comment-armor").val('<$mt:BlogSitePath encode_sha1="1"$>');
+                        }
+                        // var commentForm = $("#comments-form");
+                        // mtCommentOnSubmit(commentForm);
+                        if (mtGetUser()) {
+                            var authorVal = mtGetUser().name;
+                            var emailVal = mtGetUser().email;
+                            var urlVal = mtGetUser().url;
+                        } else {
+                            var authorVal = $("#comment-author").val();
+                    		var emailVal = $("#comment-email").val();
+                    		var urlVal = $("#comment-url").val();
+                        }
+                        var staticVal = $("#comment-static").val();
+                        var entryIdVal = $("#comment-entry_id").val();
+                        var langVal = $("#comment-lang").val();
+                        var parentIdVal = $("#comment-reply").val();
+                        var armorVal = $("#comment-armor").val();
+                        var previewVal = $("#comment-prev").val();
+                        var sidVal = $("#comment-sid").val();
+                        if($("#captcha_code")) {
+                            var capthchaVal = $("#captcha_code").val();
+                            var tokenVal = $("input[name='token']").val();
+                        }
+                        
+                	    var replyVal = $("#comment-reply").val();
+                		var textVal = $("#comment-text").val();
+                		var postData = { static: staticVal, entry_id: entryIdVal, parent_id: parentIdVal, armor: armorVal, comment_reply: replyVal, author: authorVal, email: emailVal, url: urlVal, text: textVal, captcha_code: capthchaVal, token: tokenVal};
+                	    $.post("<$MTCGIPath$><$MTCommentScript$>", postData,
+                           	function(data){
+                        		$("#comments-list").html(data);
+                        		$("#comment-submit").removeAttr("disabled");
+                        		$("#comment-text").removeAttr("disabled");
+                        		$("#comment-text").val("");
+                        	}
+                        );
+                		return false;
+                	});
+                });
+                
+            </script>
+
+            <form method="post" action="<$MTCGIPath$><$MTCommentScript$>" name="comments_form" id="comments-form" onsubmit="return mtCommentOnSubmit(this)">
+                <div id="comments-form-inner">
+                <input type="hidden" id="comment-static" name="static" value="1" />
+                <input type="hidden" id="comment-entry_id" name="entry_id" value="<$MTEntryID$>" />
+                <input type="hidden" id="comment-lang" name="__lang" value="<$MTBlogLanguage$>" />
+                <input type="hidden" id="comment-parent_id" name="parent_id" value="<$MTCommentParentID$>" id="comment-parent-id" />
+                <input type="hidden" id="comment-armor" name="armor" value="1" />
+                <input type="hidden" id="comment-preview" name="preview" value="" />
+                <input type="hidden" id="comment-sid" name="sid" value="" />
+                <div id="comments-open-data">
+                    <p id="comment-form-name">
+                        <input id="comment-author" name="author" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                        <label for="comment-author"><__trans phrase="Nombre"></label>
+                    </p>
+                    <p id="comment-form-email">
+                        <input id="comment-email" name="email" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                        <label for="comment-email"><__trans phrase="Email"></label>
+                    </p>
+                    <p id="comment-form-url">
+						<input id="comment-url" name="url" size="30" value="" onfocus="mtCommentFormOnFocus()" />
+                        <label for="comment-url"><__trans phrase="URL"></label>
+                    </p>
+                    <p id="comment-form-remember-me">
+                        <input type="checkbox" id="comment-bake-cookie" name="bakecookie" onclick="mtRememberMeOnClick(this)" value="1" accesskey="r" />
+                        <label for="comment-bake-cookie"><__trans phrase="Recordar informaci&oacute;n personal?"></label>
+                    </p>
+                </div>
+                <p id="comment-form-reply" style="display:none">
+                    <input type="checkbox" id="comment-reply" name="comment_reply" value="" onclick="mtSetCommentParentID()" />
+                    <label for="comment-reply" id="comment-reply-label"></label>
+                </p>
+                <p id="comments-open-text">
+                    <label for="comment-text"><__trans phrase="Commentario">
+                    </label>
+                    <textarea id="comment-text" name="text" rows="8" cols="59" onfocus="mtCommentFormOnFocus()"></textarea>
+                </p>
+                <div id="comments-open-captcha"></div>
+                <div id="comments-open-footer">
+                    <input type="submit" accesskey="v" name="preview_button" id="comment-preview" value="<__trans phrase="Preview">" onclick="this.form.preview.value='1';" />
+                    <input type="submit" accesskey="s" name="post" id="comment-submit" value="<__trans phrase="Publicar">" />
+                </div>
+            </div>
+            </form>
+
+    </MTIfCommentsAccepted>
+
+</MTIfCommentsActive>
+

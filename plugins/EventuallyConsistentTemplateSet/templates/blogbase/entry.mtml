@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+    <$mt:include module="<__trans phrase="HTML Head">"$>
+    <MTEntryPrevious><link rel="prev" href="<$MTEntryPermalink$>" title="<$MTEntryTitle encode_html="1"$>" rel="bookmark" /></MTEntryPrevious>
+    <MTEntryNext><link rel="next" href="<$MTEntryPermalink$>" title="<$MTEntryTitle encode_html="1"$>" rel="bookmark" /></MTEntryNext>
+    <$MTEntryTrackbackData$>
+    <title><$MTEntryTitle encode_html="1"$> - <$MTBlogName encode_html="1"$></title>
+</head>
+<body id="<$mt:BlogTemplateSetID$>" class="mt-entry-archive <$MTVar name="page_layout"$>" onload="mtEntryOnLoad()">
+
+	<$mt:include module="<__trans phrase="Banner Header">"$>
+	<div id="content">
+		<$MTInclude module="<__trans phrase="Sidebar">"$>
+		<div id="posts-container">
+			<div class="post">
+				<h2><a href="<$MTEntryPermalink$>" rel="bookmark"><$MTEntryTitle$></a></h2>
+				<h3>By <$MTEntryAuthor show_hcard="1"$> in <MTIfNonEmpty tag="EntryCategory">
+			      <MTEntryCategories glue=', '>
+			        <a href="<$MTCategoryArchiveLink$>" rel="tag">
+			          <$MTCategoryLabel$>
+			        </a>
+			       </MTEntryCategories>
+			    </MTIfNonEmpty> | <$MTEntryDate format="%e %b %Y"$></h3>
+				<div class="entry">
+					<$MTEntryBody$>
+				</div>
+				<div>
+					<MTIfCommentsActive>
+				                    <$MTInclude module="<__trans phrase="Trackbacks">"$>
+				                    <$MTInclude module="<__trans phrase="Comments">"$>
+				    </MTIfCommentsActive>
+				</div>
+			</div>
+		</div>
+	</div> 
+</body>
+</html>

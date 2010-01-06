@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+    <$mt:include module="<__trans phrase="HTML Head">"$>
+    <$mt:EntryTrackbackData$>
+    <title><$mt:PageTitle encode_html="1"$> - <$mt:BlogName encode_html="1"$></title>
+</head>
+<body id="<$mt:BlogTemplateSetID$>" class="mt-page-archive <$mt:Var name="page_layout"$>" onload="mtEntryOnLoad()">
+
+	<$mt:include module="<__trans phrase="Banner Header">"$>
+	<div id="content">
+		<$MTInclude module="<__trans phrase="Sidebar">"$>
+		<div id="posts-container">
+			<div class="post">
+				<h2><a href="<$MTEntryPermalink$>" rel="bookmark"><$mt:PageTitle$></a></h2>
+				<h3>By <$MTPageAuthor show_hcard="1"$></h3>
+				<div class="entry">
+					<$mt:PageBody$>
+				</div>
+                <$mt:Include module="<__trans phrase="Trackbacks">"$>
+                <$mt:Include module="<__trans phrase="Comments">"$>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

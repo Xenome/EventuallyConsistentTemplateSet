@@ -1,0 +1,20 @@
+<mt:IfArchiveTypeEnabled archive_type="Category">
+
+<div id="categories">
+  <h2>Categories</h2>
+    <mt:TopLevelCategories>
+        <mt:SubCatIsFirst>
+        <ul>
+        </mt:SubCatIsFirst>
+        <mt:IfNonZero tag="mt:CategoryCount">
+            <li><a href="<$mt:CategoryArchiveLink$>"<mt:IfNonEmpty tag="mt:CategoryDescription"> title="<$mt:CategoryDescription$>"</mt:IfNonEmpty>><$mt:CategoryLabel$> (<$mt:CategoryCount$>)</a>
+        </mt:IfNonZero>
+        <$mt:SubCatsRecurse$>
+            </li>
+        <mt:SubCatIsLast>
+        </ul>
+        </mt:SubCatIsLast>
+    </mt:TopLevelCategories>
+</div>
+</mt:IfArchiveTypeEnabled>
+

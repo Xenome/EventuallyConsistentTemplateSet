@@ -1,0 +1,19 @@
+<mt:IfArchiveTypeEnabled archive_type="Monthly">
+
+<div id="archives">
+      <mt:ArchiveList archive_type="Monthly">
+        <mt:ArchiveListHeader>
+    <h3><__trans  phrase="<a href="[_2]">Archivos</a>" params="<$mt:ArchiveTypeLabel$>%%<$mt:Link template="archive_index"$>"></h3>
+        <ul>
+        </mt:ArchiveListHeader>
+            <li><a href="<$mt:ArchiveLink$>"><__trans phrase="[_1] ([_2])" params="<$mt:ArchiveTitle$>%%<$mt:ArchiveCount$>"></a></li>
+        <mt:ArchiveListFooter>
+        </ul>
+        </mt:ArchiveListFooter>
+    </mt:ArchiveList>
+
+</div>
+
+
+</mt:IfArchiveTypeEnabled>
+

@@ -1,0 +1,25 @@
+<mt:SetVarBlock name="current_comment"><mt:CommentID></mt:SetVarBlock>
+
+<li id="comment-<$MTCommentID$>" class="comment<mt:If name="comment_new" eq="$current_comment"> comment-highlight</mt:If><mt:IfCommentParent> comment-reply</mt:IfCommentParent><mt:IfCommenterIsEntryAuthor> comment-by-author</mt:IfCommenterIsEntryAuthor>">
+
+<div class="comment-author-box">
+  <p>
+    <cite>
+        <$MTCommentAuthorIdentity$>
+        <mt:IfCommentParent>
+          <__trans phrase="[_1] replied to <a href="[_2]">comment from [_3]</a>" params="<span class="vcard author"><$MTCommentAuthorLink$></span>%%<mt:CommentParent><$mt:CommentLink$></mt:CommentParent>%%<mt:CommentParent><$MTCommentAuthor$></mt:CommentParent>">
+        <mt:else>
+        </mt:IfCommentParent>
+        | <a href="<$mt:CommentLink$>"><abbr class="published" title="<$MTCommentDate format_name="iso8601"$>"><$MTCommentDate$></abbr></a>
+        <MTIfCommentsAccepted>
+          | <$MTCommentReplyToLink$>
+        </MTIfCommentsAccepted>
+    </cite>
+  </p>
+</div>
+
+
+<div class="comment-body-box">
+  <$MTCommentBody$>
+</div>
+</li>

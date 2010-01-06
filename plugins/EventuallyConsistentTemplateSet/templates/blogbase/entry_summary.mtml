@@ -1,0 +1,20 @@
+	<div class="post">
+		<h2><a href="<$MTEntryPermalink$>" rel="bookmark"><$MTEntryTitle$></a></h2>
+		<h3>By <$MTEntryAuthor show_hcard="1"$> in <MTIfNonEmpty tag="EntryCategory">
+	      <MTEntryCategories glue=', '>
+	        <a href="<$MTCategoryArchiveLink$>" rel="tag">
+	          <$MTCategoryLabel$>
+	        </a>
+	       </MTEntryCategories>
+	    </MTIfNonEmpty> | <$MTEntryDate format="%e %b %Y"$></h3>
+		<div class="entry">
+			<$MTEntryBody$>
+		</div>
+		<div class="comments">
+			<a href="<$MTEntryPermalink$>#comments">
+			<$MTEntryCommentCount singular="<__trans phrase="1 Comment">" plural="<__trans phrase="# Comments">" none="<__trans phrase="No Comments">"$>
+	      	</a>
+		</div>
+	</div>
+
+
